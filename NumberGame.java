@@ -1,12 +1,17 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class NumberGame {
 
     public static void main(String[] args) {
         try (Scanner scanner = new Scanner(System.in)) {
-            int result = 8;
+            Random guesedNumber = new Random();
+
+            int result = guesedNumber.nextInt(100) + 1; //generates random number btn 1 = 100
+            System.out.println(result);
             int number = 0;
             int guessAttempts = 0;
+            boolean playAgain = false;
             while (guessAttempts < 3) {
 
                 System.out.print("Guess number: ");
@@ -21,6 +26,7 @@ public class NumberGame {
                 }
                 if (number == result) {
                     System.out.println("Correct!");
+                    break;
                 }            
                 guessAttempts++;
             }
