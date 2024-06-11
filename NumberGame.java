@@ -4,9 +4,8 @@ import java.util.Scanner;
 public class NumberGame {
 
     public static void main(String[] args) {
+        boolean playAgain = true;
         Scanner scanner = new Scanner(System.in);
-
-        playGame();
 
         // do {
         // System.out.println("Play AGAIN? yes/no");
@@ -18,21 +17,15 @@ public class NumberGame {
         // } while (input.equals("yes"));
         // System.out.println("Time well INVESTED, THANKS FOR PLAYING!");
 
-        while (true) {
+        while (playAgain) {
+            playGame();
             System.out.println("Play AGAIN? yes/no");
+            scanner.nextLine();
             String input = scanner.nextLine();
-
-            if (!scanner.hasNextLine()) {
-                System.out.println("No input available. Exiting the game.");
-                break;
-            }
-
-            if (input.equals("yes")) {
-                playGame();
-            } else {
-                System.out.println("TIME WELL SPENT. SEE YOU AGAIN!");
-            }
+            playAgain = input.equals("yes");
         }
+        System.out.println("TIME WELL SPENT. SEE YOU AGAIN!");
+
     }
 
     public static void playGame() {
