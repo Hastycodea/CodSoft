@@ -5,60 +5,64 @@ public class NumberGame {
 
     public static void main(String[] args) {
         boolean playAgain = true;
+        int roundsWon = 0;
+
+        //to be worked on
+        int numberOfRounds = 0;
+
         Scanner scanner = new Scanner(System.in);
-
-        // do {
-        // System.out.println("Play AGAIN? yes/no");
-        // String input = scanner.nextLine();
-
-        // if (input.equals("yes")) {
-        // playGame();
-        // }
-        // } while (input.equals("yes"));
-        // System.out.println("Time well INVESTED, THANKS FOR PLAYING!");
+        System.out.println("You have ONLY 8 guesses");
 
         while (playAgain) {
-            playGame();
-            System.out.println("Play AGAIN? yes/no");
-            scanner.nextLine();
-            String input = scanner.nextLine();
-            playAgain = input.equals("yes");
-        }
-        System.out.println("TIME WELL SPENT. SEE YOU AGAIN!");
+            Random rand = new Random();
+            int randomNumber = rand.nextInt(100) + 1;
+            System.out.println("");
+            int numberOfAttempts = 0;
 
-    }
+            while (numberOfAttempts < 8) {
+                int remaining = 7 - numberOfAttempts;
 
-    public static void playGame() {
-        try (Scanner scanner = new Scanner(System.in)) {
-            Random guesedNumber = new Random();
+                System.out.print("Guess number between 1-100: ");
+                int input = Integer.valueOf(scanner.nextLine());
+                numberOfAttempts++;
 
-            int result = guesedNumber.nextInt(100) + 1; // generates random number btn 1 = 100
-            // System.out.println(result);
-            int number = 0;
-            int guessAttempts = 0;
-            while (guessAttempts < 3) {
-
-                System.out.print("Guess number: ");
-                number = Integer.valueOf(scanner.nextLine());
-
-                if (number < result) {
-                    System.out.println("Too low!");
-
-                }
-                if (number > result) {
-                    System.out.println("Too high!");
-                }
-                if (number == result) {
+                if (input == randomNumber) {
                     System.out.println("Correct!");
+                    roundsWon++;
                     break;
+                } else if (input < randomNumber) {
+                    System.out.println("Too low!");
+                    System.out.println("Remaining Attempts: " + remaining);
+                    continue;
+                } else {
+                    System.out.println("Too high");
+                    System.out.println("Remaining Attempts: " + remaining);
+
                 }
-                guessAttempts++;
+
+                //to be worked on
+                if (input == randomNumber || remaining == 0) {
+                    numberOfRounds++;                    
+                }
             }
 
-        } catch (NumberFormatException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            System.out.println("Do you want to play again? (yes/no)");
+            String confirm = scanner.nextLine();
+
+            if (confirm.equalsIgnoreCase("yes")) {
+                playAgain = true;
+                continue;
+            } else {
+                playAgain = false;
+                break;
+            }
+
         }
+
+        //to worked on
+        System.out.println("Number of Rounds: " + numberOfRounds);
+        System.out.println("Rounds Won: " + roundsWon);
+        System.out.println("Thanks for PLAYING!!");
 
     }
 }
