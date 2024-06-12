@@ -7,7 +7,7 @@ public class NumberGame {
         boolean playAgain = true;
         int roundsWon = 0;
 
-        //to be worked on
+        // to be worked on
         int numberOfRounds = 0;
 
         Scanner scanner = new Scanner(System.in);
@@ -40,10 +40,11 @@ public class NumberGame {
 
                 }
 
-                //to be worked on
-                if (input == randomNumber || remaining == 0) {
-                    numberOfRounds++;                    
-                }
+            }
+            numberOfRounds++;
+
+            if (numberOfAttempts == 8) {
+                System.out.println("You've used all the attempts, the correct number was " + randomNumber);                
             }
 
             System.out.println("Do you want to play again? (yes/no)");
@@ -54,12 +55,11 @@ public class NumberGame {
                 continue;
             } else {
                 playAgain = false;
-                break;
             }
 
         }
 
-        //to worked on
+        // to worked on
         System.out.println("Number of Rounds: " + numberOfRounds);
         System.out.println("Rounds Won: " + roundsWon);
         System.out.println("Thanks for PLAYING!!");
