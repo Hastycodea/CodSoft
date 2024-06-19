@@ -5,7 +5,7 @@ public class AtmMachine {
     private UserBankAccount account;
     private Scanner scanner;
 
-    public AtmMachine(UserBankAccount account, Scanner scanner) {
+    public AtmMachine(UserBankAccount account) {
         this.account = new UserBankAccount(0);
         this.scanner = new Scanner(System.in);
     }
@@ -17,7 +17,7 @@ public class AtmMachine {
             System.out.println("2. WITHDRAW");
             System.out.println("3. CHECK BALANCE");
             System.out.println("0. EXIT");
-            System.out.println("Select option: ");
+            System.out.print("Select option: ");
             int option = Integer.valueOf(scanner.nextLine());
 
             System.out.println();
@@ -43,10 +43,9 @@ public class AtmMachine {
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        UserBankAccount account = new UserBankAccount(60);
+        UserBankAccount account = new UserBankAccount(100.0);
 
-        AtmMachine atmAccount = new AtmMachine(account, scanner);
+        AtmMachine atmAccount = new AtmMachine(account);
 
         atmAccount.start();
 
