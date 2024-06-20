@@ -20,8 +20,10 @@ public class UserBankAccount {
             balance -= amount;
             System.out.println("Withdrawed: " + amount);
             System.out.println("Balance: " + balance);            
+        } else if(amount < 0) {
+            System.out.println("Invalid amount");
         } else {
-            System.out.println("Insufficient funds/ invalid amount");
+            System.out.println("Insufficient funds");
         }
     }
 

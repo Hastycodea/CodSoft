@@ -6,7 +6,7 @@ public class AtmMachine {
     private Scanner scanner;
 
     public AtmMachine(UserBankAccount account) {
-        this.account = new UserBankAccount(0);
+        this.account = account;
         this.scanner = new Scanner(System.in);
     }
 
@@ -23,11 +23,11 @@ public class AtmMachine {
             System.out.println();
 
             if (option == 1) {
-                System.out.println("Enter amount: ");
+                System.out.print("Enter amount: ");
                 double amount = Double.valueOf(scanner.nextLine());
                 account.deposit(amount);
             } else if (option == 2) {
-                System.out.println("Enter amount: ");
+                System.out.print("Enter amount: ");
                 double amount = Double.valueOf(scanner.nextLine());
                 account.withdraw(amount);
             } else if (option == 3) {
